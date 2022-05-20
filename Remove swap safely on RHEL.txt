@@ -4,9 +4,11 @@ run lvremove my_vg/swap
 optional: run lvextend -l+100%FREE -r my_vg/root
 edit /etc/fstab remove swap partition
 edit /etc/default/grub remove swap lv
+run systemctl daemon-reload
 
 run 
 bios: grub2-mkconfig -o /boot/grub2/grub.cfg
+OR
 EFI:  grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
 
 reboot!
